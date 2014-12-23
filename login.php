@@ -6,6 +6,15 @@ if (isset($_POST['btnlogin'])) {
 
 	$url = "http://localhost/personal/revcollector/loginval.php?user=$user&pass=$password";
 	$urloutput = file_get_contents($url);
+
+	if ($urloutput == 'correct') {
+		echo "<p style='color:green; font-weight:bolder;'>Loading main panel...</p>";
+		header("location:main.php");
+	} elseif ($urloutput == 'wrong') {
+		echo "<p style='color:red; font-weight:bolder;'>Credentials not correct</p>";
+	} else {
+		echo "<p style='color:purple;'>Check your internet connectivity and try again  </p>";
+	}
 }
 ?>
 
@@ -46,21 +55,7 @@ if (isset($_POST['btnlogin'])) {
 						<input type="submit" name="btnlogin" style="border-left: 1px solid skyblue; background: #3388cc; text-shadow: none;" value="Login"/>
 					</form>
 				</div>
-				<div style="text-align: center;">
-					<?php
-					if (isset($_POST['btnlogin'])) {
-						if ($urloutput == 'correct') {
-							echo "<p style='color:green; font-weight:bolder;'>Loading main panel...</p>";
-							header("location:main.php");
-						} elseif ($urloutput == 'wrong') {
-							echo "<p style='color:red; font-weight:bolder;'>Credentials not correct</p>";
-						} else {
-							echo "<p style='color:purple;'>Check your internet connectivity and try again  </p>";
-						}
-
-					}
-					?>
-				</div>
+				<div style="text-align: center;" id="alertDisplay"></div>
 
 			</div><!-- /content -->
 

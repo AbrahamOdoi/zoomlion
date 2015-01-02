@@ -28,13 +28,12 @@ if (isset($_POST['btnlogin'])) {
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.4.min.css">
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="_assets/css/jqm-demos.css">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 		<script src="js/jquery.js"></script>
 		<script src="js/script.js"></script>
-		<script src="_assets/js/index.js"></script>
 		<script src="js/jquery.mobile-1.4.4.min.js"></script>
+		<script src="js/cordova.js"></script>
 	</head>
 	<body style="font-family:Arial; background: blue;">
 
@@ -67,3 +66,25 @@ if (isset($_POST['btnlogin'])) {
 
 	</body>
 </html>
+<script>
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+		document.addEventListener("pause", onPause, false);
+		document.addEventListener("resume", onResume, false);
+		alert("Device is Ready");
+
+	}
+
+	//What to do when paused
+	function onPause() {
+
+		alert("paused!");
+	}
+
+	//What to do when resumed
+	function onResume() {
+
+		alert("resume");
+	}
+</script>
